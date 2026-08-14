@@ -27,7 +27,7 @@ export class MovieClient {
     }
 
     async getHomeFeed(): Promise<HomeFeed> {
-        const data = await this.httpClient.get(`home/`);
+        const data = await this.httpClient.get(`home`);
         return HomeFeedValidation(data);
     }   
 }
