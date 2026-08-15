@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import type { HomeFeedSection } from '../types/HomeFeedSection'
 import '../styles/SetionHomeStyle.css'
 
@@ -12,6 +13,11 @@ export const SectionHome = ({ section }:{section: HomeFeedSection} ) => {
         <div className="movie-row">
                 {items.map((movie) => (
                     <article key={movie.id} className="movie-card">
+                        <Link 
+                            to={`/movie/${movie.id}`} 
+                            key={movie.id} 
+                            className="movie-card"
+                        >
                         <img
                             referrerPolicy="no-referrer"
                             src={movie.urlVerticalPoster}
@@ -20,6 +26,7 @@ export const SectionHome = ({ section }:{section: HomeFeedSection} ) => {
                             loading="lazy"
                         />
                         <p className="movie-title">{movie.title}</p>
+                        </Link>
                     </article>
                 ))}
             </div>

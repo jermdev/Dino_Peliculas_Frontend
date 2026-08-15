@@ -1,36 +1,26 @@
-import type { Movie, Category } from '../../types/Movie'
+import type { MovieResponse } from '../../api/MovieResponse'
 
-
-const isValidCategory = (item: any): item is Category => {
+const isValidMovie = (item: any): item is MovieResponse => {
   return (
     typeof item === "object" &&
     item !== null &&
-    typeof item.id === "number" &&
-    typeof item.name === "string"
+    typeof item._id === "string" &&
+    typeof item._title === "string" &&
+    typeof item._description === "string" &&
+    typeof item._urlHorizontalPoster === "string" &&
+    typeof item._urlVerticalPoster === "string" &&
+    typeof item._urlMedia === "string" &&
+    typeof item._subtitles === "string" &&
+    Array.isArray(item._categories) &&
+    item._categories.every((cat: any) => typeof cat === "string")
   );
 };
 
-const isValidMovie = (item: any): item is Movie => {
-  return (
-    typeof item === "object" &&
-    item !== null &&
-    typeof item.id === "string" &&
-    typeof item.title === "string" &&
-    typeof item.description === "string" &&
-    typeof item.urlHorizontalPoster === "string" &&
-    typeof item.urlVerticalPoster === "string" &&
-    typeof item.urlMedia === "string" &&
-    typeof item.subtitle === "string" &&
-    Array.isArray(item.categories) &&
-    item.categories.every(isValidCategory)
-  );
-};
-
-export const getMovieByIdValidation = (response: any): Movie => {
-    if(!isValidMovie(response)) {
-    throw new Error(
-      `Respuesta inválida de getMovieById: ${JSON.stringify(response)}`
-    );
-  }
-  return response;
+export const getMovieByIdValidation = (response: any): MovieResponse => {
+    if (!isValidMovie(response)) {
+        throw new Error(
+            `Respuesta inválida de getMovieById: ${JSON.stringify(response)}`
+        );
+    }
+    return response;
 }

@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
-import { SectionHome } from '../components/sectionHome'
+
+import { SectionHome } from '../components/SectionHome'
 import { ShowService } from '../services/ShowService'
+import { Loading } from '../components/Loading'
 import type { HomeFeed } from '../types/HomeFeed';
+
 
 
 export const Home = () => {
@@ -15,12 +18,11 @@ export const Home = () => {
         const fecthHomeData = async () => {
          try {
                 const data = await showService.buildPage();
-                console.log(data);
+                
                 
                 if (isMounted) setSections(data);
             } catch (err) {
                     if (isMounted) setError('Error al cargar las películas');
-                    console.log("hola");
 
             } finally {
                     if (isMounted) setIsLoading(false);
@@ -30,11 +32,11 @@ export const Home = () => {
         fecthHomeData();
 
          return () => {
-                isMounted = false; // cleanup
+                isMounted = false;
         };
     }, [])
    
-    if (isLoading) return <p className="loading">Cargando...</p>;
+    if (isLoading) return <Loading message='La primera carga suele tardar 30 segundos' />;
     if (error) return <p className="error">{error}</p>;
 
     return (<>

@@ -5,6 +5,7 @@ import type { Movie }  from '../types/Movie'
 import type { HomeFeed } from '../types/HomeFeed'
 import { getMovieByIdValidation } from '../utils/valueObjects/getMovieByIdValidation'
 import { HomeFeedValidation } from '../utils/valueObjects/HomeFeedValidation'
+import { adaptMovie } from '../adapters/movieAdapter'
 
 export class MovieClient {
     private httpClient: HttpClient;
@@ -23,7 +24,8 @@ export class MovieClient {
 
     async getMovieById(id: string): Promise<Movie> {
         const data = await this.httpClient.get(`content/${id}`);
-        return getMovieByIdValidation(data);
+        const validated = getMovieByIdValidation(data);
+        return adaptMovie(validated);
     }
 
     async getHomeFeed(): Promise<HomeFeed> {
