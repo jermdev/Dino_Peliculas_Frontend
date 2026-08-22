@@ -3,4 +3,25 @@
   justify-content: center;
   width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .search-bar-wrapper {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  .search-bar-wrapper {
+    padding: 0.5rem;
+  }
+
+  .search-bar-wrapper input,
+  .search-bar-wrapper > * {
+    width: 100%;
+    max-width: 100%;
+  }
 }

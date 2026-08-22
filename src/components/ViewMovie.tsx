@@ -61,7 +61,7 @@ export const MoviePlayer = () => {
 
     if (Hls.isSupported()) {
         const hls = new Hls({
-            maxBufferLength: 30,
+            maxBufferLength: 60,
             maxMaxBufferLength: 600,
         });
         hlsRef.current = hls;
@@ -117,7 +117,7 @@ export const MoviePlayer = () => {
             <video
                 ref={videoRef}
                 controls
-                autoPlay
+                playsInline
                 className="movie-video"
             />
 

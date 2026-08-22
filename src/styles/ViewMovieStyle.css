@@ -12,7 +12,6 @@
     display: block;
 }
 
-
 .button-go-back {
     position: fixed;
     bottom: 24px;
@@ -37,7 +36,6 @@
 
     z-index: 10;
     transition: background-color 0.2s ease, transform 0.15s ease;
-    
 }
 
 .button-go-back:hover {
@@ -84,10 +82,10 @@
     color: #b3b3b3;
     font-size: 0.95rem;
     line-height: 1.6;
-    max-width: 70ch; /* mejora legibilidad, evita líneas demasiado largas */
+    max-width: 70ch;
 }
 
-/* Responsive: en pantallas chicas, reduce paddings */
+/* Tablets / móviles grandes */
 @media (max-width: 600px) {
     .movie-player-container {
         padding: 1rem;
@@ -95,5 +93,35 @@
 
     .movie-title {
         font-size: 1.4rem;
+    }
+
+    /* respeta el safe-area del notch/home-indicator en iPhone */
+    .button-go-back {
+        bottom: calc(16px + env(safe-area-inset-bottom));
+        left: 16px;
+        width: 56px;
+        height: 56px;
+        font-size: 0.7rem;
+    }
+
+    .movie-description {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+}
+
+/* Móviles chicos */
+@media (max-width: 380px) {
+    .movie-player-container {
+        padding: 0.75rem;
+    }
+
+    .movie-title {
+        font-size: 1.2rem;
+    }
+
+    .category-chip {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
     }
 }
