@@ -4,7 +4,7 @@ export class HttpClient {
         this.baseURL = baseUrl;
     }
 
-    async get<T>(path: string, params?: Record<string, string>): Promise<unknown> {
+    async get<T>(path: string, params?: Record<string, string>): Promise<T> {
         const url = new URL(path, this.baseURL);
         if (params) {
             Object.entries(params).forEach(([key, value]) => 
