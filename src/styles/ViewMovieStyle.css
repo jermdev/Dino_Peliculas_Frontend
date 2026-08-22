@@ -12,6 +12,43 @@
     display: block;
 }
 
+
+.button-go-back {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-color: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    color: white;
+    font-size: 0.75rem;
+    cursor: pointer;
+
+    z-index: 10;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    
+}
+
+.button-go-back:hover {
+    background-color: rgba(20, 20, 20, 0.85);
+    transform: scale(1.08);
+}
+
+.button-go-back:active {
+    transform: scale(0.95);
+}
+
 .movie-info {
     margin-top: 1.5rem;
 }

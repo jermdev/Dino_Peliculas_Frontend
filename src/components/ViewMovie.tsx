@@ -1,6 +1,6 @@
 // components/MoviePlayer/MoviePlayer.tsx
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Hls from 'hls.js'
 import { ShowService } from '../services/ShowService'
 import { Loading } from '../components/Loading'
@@ -19,6 +19,12 @@ export const MoviePlayer = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const navigate = useNavigate();
+
+    const handleGoback = () => {
+        navigate(-1);
+    }
+
     // 1. Obtener info de la película (incluye la url del .m3u8)
     useEffect(() => {
         let isMounted = true;
@@ -33,7 +39,6 @@ export const MoviePlayer = () => {
             try {
                 
                 const data = await movieService.getMovieById(id);
-                
                 if (isMounted) setMovie(data);
                 
             } catch (err) {
@@ -69,8 +74,6 @@ export const MoviePlayer = () => {
             if (data.fatal) setError('Error al reproducir el video');
         });
 
-        
-
         // 🔍 Frames perdidos - correlaciona con lo que ves visualmente
         const frameCheckInterval = setInterval(() => {
             if (video && 'getVideoPlaybackQuality' in video) {
@@ -92,15 +95,25 @@ export const MoviePlayer = () => {
         video.src = movie.urlMedia;
     } else {
         setError('Tu navegador no soporta la reproducción de este video');
+        
     }
 }, [movie?.urlMedia]);
 
     if (isLoading) return <Loading message="Cargando película..." />;
-    if (error) return <p className="error">{error}</p>;
+    if (error) {
+        return <p className="error">{error}</p>
+    };
     if (!movie) return null;
 
     return (
+    <>
+        
         <div className="movie-player-container">
+            
+        
+            <button className='button-go-back' onClick={handleGoback} aria-label='Volver'>←</button>
+            
+            
             <video
                 ref={videoRef}
                 controls
@@ -122,5 +135,7 @@ export const MoviePlayer = () => {
                 <p className="movie-description">{movie.description}</p>
             </div>
         </div>
+    </>
+       
     );
 }
