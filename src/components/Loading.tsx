@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import '../styles/LoagingStyle.css'
+import '../styles/LoadingStyle.css'
 
 interface LoadingProps {
     message?: string;

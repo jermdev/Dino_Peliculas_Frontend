@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { HomeFeedSection } from '../types/HomeFeedSection'
-import '../styles/SetionHomeStyle.css'
+import '../styles/SectionHomeStyle.css'
 
 export const SectionHome = ({ section }:{section: HomeFeedSection} ) => {
 
