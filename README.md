@@ -23,7 +23,7 @@ Tipado Estricto: Código robusto y autodescriptivo gracias a TypeScript.
 ## 📂 Estructura del Proyecto
 
 A continuación, se detalla la organización de los directorios y archivos más importantes dentro del código fuente:
-
+```
 Dino_Peliculas_Frontend/
 ├── public/               # Archivos estáticos públicos (favicon, etc.)
 ├── src/
@@ -69,7 +69,7 @@ Dino_Peliculas_Frontend/
 ├── package.json          # Dependencias y scripts del proyecto
 ├── README.md             # Documentación del proyecto (este archivo)
 └── tsconfig.json         # Configuración del compilador de TypeScript
-
+```
 
 ## Instalación y Uso local
 
@@ -83,23 +83,26 @@ Pasos para levantar el proyecto
 
 Clona este repositorio en tu máquina local:
 
+```
 git clone https://github.com/jermdev/Dino_Peliculas_Frontend.git
-
+```
 
 Ingresa a la carpeta del proyecto:
 
+```
 cd Dino_Peliculas_Frontend
-
+```
 
 Instala todas las dependencias necesarias:
 
+```
 npm install
-
+```
 
 Ejecuta el servidor de desarrollo:
-
+```
 npm run dev
-
+```
 
 ## Nota del Desarrolador
 El propocito personal que le di a este pequeño proyecto es poder aprender a conectar diferentes servicios
