@@ -1,56 +1,107 @@
-/* SectionHome.css */
+/* SectionHomeStyle.css */
 
 .section {
-    margin: 2rem 0;
-    padding: 0 2rem;
+  margin: 2.25rem 0;
+  padding: 0 2rem;
+  text-align: left;
 }
 
 .section h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  transition: var(--theme-transition);
 }
 
 .movie-row {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 0.5rem;
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.5rem 0.25rem 1rem 0.25rem;
 
-    /* opcional: ocultar la barra de scroll */
-    scrollbar-width: none;
+  /* ocultar barra de scroll nativa */
+  scrollbar-width: none;
 }
 
 .movie-row::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .movie-card {
-    flex: 0 0 auto;
-    width: 160px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  flex: 0 0 auto;
+  width: 160px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 8px;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .movie-card:hover {
-    transform: scale(1.05);
+  transform: translateY(-5px) scale(1.03);
+}
+
+.movie-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 .movie-card img {
-    width: 100%;
-    aspect-ratio: 2 / 3;
-    object-fit: cover;
-    border-radius: 6px;
-    display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  background-color: var(--bg-surface-elevated);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease;
+}
+
+.movie-card:hover img {
+  box-shadow: var(--shadow-md);
 }
 
 .movie-title {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #ccc;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: var(--theme-transition);
+}
+
+.movie-card:hover .movie-title {
+  color: var(--accent-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section {
+    margin: 1.75rem 0;
+    padding: 0 1.5rem;
+  }
+
+  .movie-card {
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+
+  .movie-card {
+    width: 125px;
+  }
+
+  .section h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
 }

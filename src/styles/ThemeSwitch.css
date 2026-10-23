@@ -1,0 +1,200 @@
+/* ==========================================================================
+   THEME SWITCH COMPONENT STYLES
+   ========================================================================== */
+
+.theme-switch-container {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.theme-switch-button {
+  position: relative;
+  width: 66px;
+  height: 34px;
+  border-radius: 9999px;
+  background-color: var(--switch-track-bg);
+  border: 1px solid var(--switch-track-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.theme-switch-button:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 12px var(--switch-glow), var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.theme-switch-button:focus-visible {
+  border-color: var(--border-color-focus);
+  box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+.theme-switch-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Icons inside the pill */
+.theme-switch-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.theme-switch-icon--sun {
+  margin-left: 5px;
+  color: var(--switch-sun-color);
+}
+
+.theme-switch-icon--moon {
+  margin-right: 5px;
+  color: var(--switch-moon-color);
+}
+
+/* Active icon emphasis */
+[data-theme="light"] .theme-switch-icon--sun {
+  opacity: 1;
+  transform: scale(1.08) rotate(0deg);
+  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
+}
+
+[data-theme="light"] .theme-switch-icon--moon {
+  opacity: 0.45;
+  transform: scale(0.9);
+}
+
+:root:not([data-theme="light"]) .theme-switch-icon--moon {
+  opacity: 1;
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.6));
+}
+
+:root:not([data-theme="light"]) .theme-switch-icon--sun {
+  opacity: 0.45;
+  transform: scale(0.9);
+}
+
+/* Sliding Knob / Thumb */
+.theme-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--switch-thumb-bg);
+  box-shadow: var(--switch-thumb-shadow);
+  border: 1px solid var(--border-color-subtle);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Knob position according to theme */
+.theme-switch-button[data-state="dark"] .theme-switch-thumb {
+  transform: translateX(32px);
+}
+
+.theme-switch-button[data-state="light"] .theme-switch-thumb {
+  transform: translateX(0);
+}
+
+/* Inner miniature indicator on the thumb */
+.theme-switch-thumb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-primary);
+  opacity: 0.8;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Tablets y Móviles)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .theme-switch-container {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .theme-switch-button {
+    width: 60px;
+    height: 32px;
+    padding: 2.5px;
+  }
+
+  .theme-switch-thumb {
+    top: 2.5px;
+    left: 2.5px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .theme-switch-button[data-state="dark"] .theme-switch-thumb {
+    transform: translateX(28px);
+  }
+
+  .theme-switch-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-switch-container {
+    top: calc(0.6rem + env(safe-area-inset-top, 0px));
+    right: calc(0.6rem + env(safe-area-inset-right, 0px));
+  }
+
+  .theme-switch-button {
+    width: 54px;
+    height: 30px;
+    padding: 2px;
+  }
+
+  .theme-switch-thumb {
+    top: 2px;
+    left: 2px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .theme-switch-button[data-state="dark"] .theme-switch-thumb {
+    transform: translateX(24px);
+  }
+
+  .theme-switch-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .theme-switch-icon--sun {
+    margin-left: 3px;
+  }
+
+  .theme-switch-icon--moon {
+    margin-right: 3px;
+  }
+}
